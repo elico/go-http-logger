@@ -27,7 +27,7 @@ func (w *statusWriter) Write(b []byte) (int, error) {
 }
 
 // WriteLog Logs the Http Status for a request into fileHandler and returns a httphandler function which is a wrapper to log the requests.
-func WriteLog(handle http.Handler, fileHandler *os.File, *enabled bool) http.HandlerFunc {
+func WriteLog(handle http.Handler, fileHandler *os.File, enabled *bool) http.HandlerFunc {
 	if enabled {
 		logger := log.New(fileHandler, "", 0)
 		return func(w http.ResponseWriter, request *http.Request) {
